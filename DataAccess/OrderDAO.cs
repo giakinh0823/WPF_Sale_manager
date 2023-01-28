@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,5 +64,78 @@ namespace DataAccess
             return orders;
         }
 
+        public void Add(Order order)
+        {
+            try
+            {
+                Order p = FindOne(item => item.OrderId.Equals(order.MemberId));
+                if (p == null)
+                {
+                    using (var saleManagement = new SaleManagerContext())
+                    {
+                        saleManagement.Orders.Add(order);
+                        saleManagement.SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    throw new Exception("The order is already exist");
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Delete(Order order)
+        {
+            try
+            {
+                Order p = FindOne(item => item.OrderId.Equals(order.OrderId));
+                if (p != null)
+                {
+                    using (var saleManagerContext = new SaleManagerContext())
+                    {
+                        saleManagerContext.Orders.Remove(order);
+                        saleManagerContext.SaveChanges();
+                    }
+                }
+                else
+                {
+                    throw new Exception("The order does not exist");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Update(Order order)
+        {
+            try
+            {
+                Order p = FindOne(item => item.OrderId.Equals(order.OrderId));
+                if (p != null)
+                {
+                    using (var saleManager = new SaleManagerContext())
+                    {
+                        saleManager.Entry<Order>(order).State = EntityState.Modified;
+                        saleManager.SaveChanges();
+                    }
+                }
+                else
+                {
+                    throw new Exception("The order does not exist");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

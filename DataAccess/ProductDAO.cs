@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,5 +62,80 @@ namespace DataAccess
             return products;
         }
 
+        public void Add(Product product)
+        {
+            try
+            {
+                Product p = FindOne(item => item.ProductId.Equals(product.ProductId));
+                if (p == null)
+                {
+                    using (var saleManagement = new SaleManagerContext())
+                    {
+                        saleManagement.Products.Add(product);
+                        saleManagement.SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    throw new Exception("The product is already exist");
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Delete(Product product)
+        {
+            try
+            {
+                Product p = FindOne(item => item.ProductId.Equals(product.ProductId));
+                if (p != null)
+                {
+                    using (var saleManagerContext = new SaleManagerContext())
+                    {
+                        saleManagerContext.Products.Remove(product);
+                        saleManagerContext.SaveChanges();
+                    }
+                }
+                else
+                {
+                    throw new Exception("The product does not exist");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Update(Product product)
+        {
+            try
+            {
+                Product p = FindOne(item => item.ProductId.Equals(product.ProductId));
+                if (p != null)
+                {
+                    using (var saleManager = new SaleManagerContext())
+                    {
+                        saleManager.Entry<Product>(product).State = EntityState.Modified;
+                        saleManager.SaveChanges();
+                    }
+                }
+                else
+                {
+                    throw new Exception("The product does not exist");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
+
+}
 }
