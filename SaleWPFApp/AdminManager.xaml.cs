@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaleWPFApp
 {
     /// <summary>
-    /// Interaction logic for Product.xaml
+    /// Interaction logic for AdminManager.xaml
     /// </summary>
-    public partial class Product : Page
+    public partial class AdminManager : Window
     {
-        public Product()
+        public AdminManager()
         {
             InitializeComponent();
         }

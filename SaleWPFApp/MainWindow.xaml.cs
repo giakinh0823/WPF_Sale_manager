@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Repository;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +29,26 @@ namespace SaleWPFApp
 
         private void Btn_login(object sender, RoutedEventArgs e)
         {
-
+            string username = txtBoxUsername.Text.ToString();
+            string password = pwdBoxPassword.Password.ToString();
+            var account = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("account");
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password))
+            {
+                if (username.Equals(account["username"]) && password.Equals(account["password"]))
+                {
+                    this.Hide();
+                    AdminManager adminManager = new AdminManager();
+                    adminManager.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter username and password");
+                }
+            } 
+            else
+            {
+                MessageBox.Show("Please enter username and password");
+            }
         }
     }
 }

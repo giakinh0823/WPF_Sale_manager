@@ -5,10 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto">
-            
+        <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Margin="0 0 0 30">
+            <Image Source="static/logo/logo.png" Height="55" Width="278" Margin="0 10"/>
+            <TextBlock Style="{StaticResource ResourceKey=headingPrimary}" HorizontalAlignment="Center">
+                    FStore
+            </TextBlock>
+            <TextBlock Style="{StaticResource ResourceKey=spanPrimary}" HorizontalAlignment="Center" Margin="0 0 0 10">
+                    Welcome to FStore FPT University
+            </TextBlock>
+            <Label Content="Username" Style="{StaticResource ResourceKey=labelPrimary}"/>
+            <TextBox x:Name="txtBoxUsername" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+            <Label Content="Password" Style="{StaticResource ResourceKey=labelPrimary}"/>
+            <PasswordBox x:Name="pwdBoxPassword" Margin="0 0 0 20" Style="{StaticResource ResourceKey=passwordBoxPrimary}"/>
+            <Button Content="Login" Style="{StaticResource ResourceKey=btnPrimary}" Width="100" Click="Btn_login"></Button>
         </StackPanel>
     </Grid>
 </Window>
