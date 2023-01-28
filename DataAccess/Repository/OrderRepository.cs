@@ -9,7 +9,7 @@ namespace DataAccess.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        public void AddNew(Order order)
+        public void Add(Order order)
         {
             throw new NotImplementedException();
         }

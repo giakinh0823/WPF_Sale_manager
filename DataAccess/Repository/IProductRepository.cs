@@ -10,7 +10,7 @@ namespace DataAccess.Repository
     public interface IProductRepository
     {
         IEnumerable<Product> List();
-        void AddNew(Product product);
+        void Add(Product product);
         void Update(Product product);
         void Remove(Product product);
         Product FindById(int id);

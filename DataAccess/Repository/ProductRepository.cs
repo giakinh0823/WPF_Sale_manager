@@ -10,7 +10,7 @@ namespace DataAccess.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        public void AddNew(Product product)
+        public void Add(Product product)
         {
             throw new NotImplementedException();
         }
