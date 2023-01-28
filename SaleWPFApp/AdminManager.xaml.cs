@@ -23,5 +23,25 @@ namespace SaleWPFApp
         {
             InitializeComponent();
         }
+
+        private void Goto_AdminProduct(object sender, MouseButtonEventArgs e)
+        {
+            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            AdminProduct adminProduct = new AdminProduct();
+            frameMain.Content = adminProduct;
+        }
+
+        private void Goto_AdminMember(object sender, MouseButtonEventArgs e)
+        {
+            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            AdminMember adminMember = new AdminMember();
+            frameMain.Content = adminMember;
+        }
+        private void Goto_AdminOrder(object sender, MouseButtonEventArgs e)
+        {
+            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            AdminOrder adminOrder = new AdminOrder();
+            frameMain.Content = adminOrder;
+        }
     }
 }
