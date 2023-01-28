@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace DataAccess
 {
@@ -28,5 +26,40 @@ namespace DataAccess
 
             }
         }
+
+        public Product FindOne(Expression<Func<Product, bool>> predicate)
+        {
+            Product product = null;
+            try
+            {
+                using (var saleManagerContext = new SaleManagerContext())
+                {
+                    product = saleManagerContext.Products.SingleOrDefault(predicate);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return product;
+        }
+
+        public static IEnumerable<Product> FindAll(Expression<Func<Product, bool>> predicate)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                using (var saleManagerContext = new SaleManagerContext())
+                {
+                    products = saleManagerContext.Products.Where(predicate).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return products;
+        }
+
     }
 }
