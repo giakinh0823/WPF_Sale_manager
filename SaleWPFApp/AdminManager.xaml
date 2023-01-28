@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800">
+        Title="Admin" Height="550" Width="1000">
+    <Window.Resources>
+        <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" Height="40">
+                <Border Padding="10 0">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                        <TextBlock Style="{StaticResource ResourceKey=headingSecorndary}">FStore</TextBlock>
+                        <Button Content="Logout" Background="Transparent" BorderThickness="0" Width="50" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </Border>
+            </Grid>
+            <Grid DockPanel.Dock="Left" Width="200">
+                <TreeView Name="Menu" BorderThickness="0">
+                    <TreeViewItem Header="Products" IsSelected="True" Style="{StaticResource ResourceKey=treeViewItemMenuPrimary}">
+                        <TreeViewItem Header="List Products" FontSize="14"/>
+                        <TreeViewItem Header="Add new" FontSize="14"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Member" IsSelected="True" Style="{StaticResource ResourceKey=treeViewItemMenuPrimary}">
+                        <TreeViewItem Header="List member" FontSize="14"/>
+                        <TreeViewItem Header="Add new" FontSize="14"/>
+                    </TreeViewItem>
+                </TreeView>
+            </Grid>
+            <Grid></Grid>
+        </DockPanel>
     </Grid>
 </Window>
