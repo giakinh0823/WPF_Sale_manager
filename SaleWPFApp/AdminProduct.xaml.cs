@@ -80,7 +80,7 @@ namespace SaleWPFApp
 
         private void Button_DeleteProduct(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Remove product", "Do you wan't remove product seledted?", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = MessageBox.Show("Do you wan't remove product seledted?", "Remove product", MessageBoxButton.YesNo);
             if(messageBoxResult == MessageBoxResult.Yes)
             {
                 List<Product> products = listView.SelectedItems.Cast<Product>().ToList();
