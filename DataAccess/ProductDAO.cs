@@ -63,7 +63,7 @@ namespace DataAccess
             return product;
         }
 
-        public static IEnumerable<Product> FindAll(Expression<Func<Product, bool>> predicate)
+        public IEnumerable<Product> FindAll(Expression<Func<Product, bool>> predicate)
         {
             List<Product> products = new List<Product>();
             try

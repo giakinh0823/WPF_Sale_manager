@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,6 +16,18 @@ namespace DataAccess.Repository
             ProductDAO.Instance.Add(product);
         }
 
+        public IEnumerable<Product> FindAllBy(ProductFilter filter)
+        {
+            if(filter !=null)
+            {
+                return ProductDAO.Instance.FindAll(product => (filter.ProductId == null || product.ProductId.Equals(filter.ProductId)) &&
+                                                              (filter.ProductName == null || product.ProductName.ToLower().Contains(filter.ProductName.ToLower())) &&
+                                                              (filter.UnitPrice == null || product.UnitPrice.Equals(filter.UnitPrice)) &&
+                                                              (filter.UnitsInStock == null || product.UnitsInStock.Equals(filter.UnitsInStock)));
+            }
+            return List();
+        }
+
         public Product FindById(int id)
         {
             throw new NotImplementedException();
@@ -29,6 +42,7 @@ namespace DataAccess.Repository
         {
             throw new NotImplementedException();
         }
+
 
         public IEnumerable<Product> List()
         {

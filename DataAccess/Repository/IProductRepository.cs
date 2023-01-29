@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace DataAccess.Repository
         Product FindById(int id);
         IEnumerable<Product> FindByPrice(decimal price);
         IEnumerable<Product> FindByStock(int stock);
+        IEnumerable<Product> FindAllBy(ProductFilter filter);
     }
 }

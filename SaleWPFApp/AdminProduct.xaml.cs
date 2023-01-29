@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using DataAccess.Repository;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
@@ -89,6 +90,21 @@ namespace SaleWPFApp
             }
         }
 
+        private void Button_SearchProduct(object sender, RoutedEventArgs e)
+        {
+            int? id = !String.IsNullOrEmpty(searchById.Text) ? int.Parse(searchById.Text) : null;
+            string? name = searchByName.Text;
+            decimal? unitPrice = !String.IsNullOrEmpty(searchByUnitPrice.Text) ? decimal.Parse(searchByUnitPrice.Text) : null;
+            int? unitsInStock = !String.IsNullOrEmpty(searchByUnitsInStock.Text) ? int.Parse(searchByUnitsInStock.Text) : null; 
+
+            ProductFilter productFilter = new ProductFilter();
+            productFilter.ProductId = id;
+            productFilter.ProductName = name;
+            productFilter.UnitPrice = unitPrice;
+            productFilter.UnitsInStock = unitsInStock;
+
+            listView.ItemsSource = productRepository.FindAllBy(productFilter);
+        }
         private void Button_EditProduct(object sender, RoutedEventArgs e)
         {
 
