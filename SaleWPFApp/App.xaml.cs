@@ -27,10 +27,10 @@ namespace SaleWPFApp
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<AdminManager>();
-            services.AddSingleton<AdminCategory>();
             services.AddSingleton<AdminMember>();
             services.AddSingleton<AdminOrder>();
             services.AddSingleton<AdminProduct>();
+            services.AddSingleton<AdminMemberCreate>();
             services.AddSingleton<AdminProductCreate>();
             services.AddSingleton<Home>();
             services.AddSingleton<MainWindow>();

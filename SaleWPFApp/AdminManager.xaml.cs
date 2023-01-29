@@ -27,14 +27,6 @@ namespace SaleWPFApp
             frameMain.Content = adminProduct;
         }
 
-
-        private void Goto_AdminCategory(object sender, MouseButtonEventArgs e)
-        {
-            logo.Visibility = Visibility.Hidden;
-            AdminCategory adminCategory = new AdminCategory();
-            frameMain.Content = adminCategory;
-        }
-
         private void Goto_AdminMember(object sender, MouseButtonEventArgs e)
         {
             logo.Visibility = Visibility.Hidden;
