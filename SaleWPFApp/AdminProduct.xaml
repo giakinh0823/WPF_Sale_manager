@@ -6,13 +6,14 @@
       xmlns:local="clr-namespace:SaleWPFApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="1000"
-      Title="AdminProduct">
+      Title="AdminProduct"
+      Loaded="Page_Loaded">
     <Page.Resources>
         <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
     </Page.Resources>
     <Grid Background="White">
         <StackPanel>
-            <TextBlock Margin="0 10 0 10"  FontWeight="Light" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
+            <TextBlock Margin="0 10 0 10"  FontWeight="Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
               Products Manager
             </TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -25,6 +26,11 @@
             </StackPanel>
             <Grid>
                 <ListView x:Name="listView" Width="auto" Grid.Column="0" SizeChanged="ListView_SizeChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ProductId" Width="100" DisplayMemberBinding="{Binding Path=ProductId }"/>
@@ -33,7 +39,16 @@
                             <GridViewColumn Header="Weight" Width="100" DisplayMemberBinding="{Binding Path=Weight}"/>
                             <GridViewColumn Header="UnitPrice" Width="100" DisplayMemberBinding="{Binding Path=UnitPrice}"/>
                             <GridViewColumn Header="UnitsInStock" Width="200" DisplayMemberBinding="{Binding Path=UnitsInStock}"/>
-                            <GridViewColumn Header="Action" Width="200" DisplayMemberBinding="{Binding Path=UnitsInStock}"></GridViewColumn>
+                            <GridViewColumn Header="Action" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="Delete" Margin="0" VerticalAlignment="Center" Padding="10 2" FontSize="12" Click="Button_DeleteProduct" Style="{StaticResource ResourceKey=btnPrimary}" />
+                                            <Button Content="Edit" Margin="0" VerticalAlignment="Center" Padding="10 2" FontSize="12" Click="Button_EditProduct" Style="{StaticResource ResourceKey=btnPrimary}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

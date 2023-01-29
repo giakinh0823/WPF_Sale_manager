@@ -31,7 +31,7 @@ namespace BusinessObject.Model
                 var conf = new ConfigurationBuilder()
                    .SetBasePath(Directory.GetCurrentDirectory())
                    .AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseSqlServer(conf.GetConnectionString("DeDoc"));
+                optionsBuilder.UseSqlServer(conf.GetConnectionString("DeDoc")); 
             }
         }
 

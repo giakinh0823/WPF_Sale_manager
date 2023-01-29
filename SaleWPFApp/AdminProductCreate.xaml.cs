@@ -22,11 +22,13 @@ namespace SaleWPFApp
     public partial class AdminProductCreate : Window
     {
         private readonly IProductRepository productRepository;
+        private readonly AdminProduct adminProduct;
 
-        public AdminProductCreate(IProductRepository _productRepository)
+        public AdminProductCreate(AdminProduct _adminProduct, IProductRepository _productRepository)
         {
             InitializeComponent();
             this.productRepository = _productRepository;
+            this.adminProduct = _adminProduct;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,16 +37,17 @@ namespace SaleWPFApp
             int categoryId = int.Parse(txtBoxCategory.Text);
             string weight = txtBoxWeight.Text;
             decimal unitPrice = decimal.Parse(txtBoxUnitPrice.Text);
-            int unitInStock = int.Parse(txtBoxUnitInStock.Text);
+            int unitsInStock = int.Parse(txtBoxUnitInStock.Text);
 
             Product product= new Product();
             product.ProductName = name;
             product.CategoryId = categoryId;
             product.Weight = weight;
             product.UnitPrice = unitPrice;
-            product.UnitSlnStock = unitInStock;
+            product.UnitsInStock = unitsInStock;
             productRepository.Add(product);
             this.Close();
+            adminProduct.RefreshListView();
         }
     }
 }

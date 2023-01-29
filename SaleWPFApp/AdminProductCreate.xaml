@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="Product Control" Height="500" Width="800">
+        Title="Product Control" Height="500" Width="600">
     <Window.Resources>
         <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
     </Window.Resources>
@@ -14,7 +14,7 @@
             <TextBlock Margin="0 10 0 20"  FontWeight="Light" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
               Product Control
             </TextBlock>
-            <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
                 <Label Content="Name" Style="{StaticResource ResourceKey=labelPrimary}"/>
                 <TextBox x:Name="txtBoxName" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
                 <Label Content="Weight" Style="{StaticResource ResourceKey=labelPrimary}"/>

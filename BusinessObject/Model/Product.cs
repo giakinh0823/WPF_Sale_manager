@@ -17,7 +17,7 @@ namespace BusinessObject.Model
         public string ProductName { get; set; }
         public string Weight { get; set; }
         public decimal UnitPrice { get; set; }
-        public int UnitSlnStock { get; set; }
+        public int UnitsInStock { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

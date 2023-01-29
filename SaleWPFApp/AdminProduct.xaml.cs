@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repository;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,16 @@ namespace SaleWPFApp
         {
             InitializeComponent();
             this.productRepository = _productRepository;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            listView.ItemsSource = productRepository.List();
+        }
+
+        public void RefreshListView()
+        {
+            listView.ItemsSource = productRepository.List();
         }
 
         private void ListView_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -57,13 +68,23 @@ namespace SaleWPFApp
 
         private void Button_OpenProductCreate(object sender, RoutedEventArgs e)
         {
-            AdminProductCreate adminProductCreate = new AdminProductCreate(productRepository);
+            AdminProductCreate adminProductCreate = new AdminProductCreate(this, productRepository);
             adminProductCreate.Show();
         }
 
         private void Button_ReloadProduct(object sender, RoutedEventArgs e)
         {
             listView.ItemsSource = productRepository.List();
+        }
+
+        private void Button_DeleteProduct(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_EditaProduct(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
