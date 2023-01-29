@@ -12,7 +12,7 @@ namespace DataAccess.Repository
     {
         public void Add(Product product)
         {
-            throw new NotImplementedException();
+            ProductDAO.Instance.Add(product);
         }
 
         public Product FindById(int id)
@@ -32,7 +32,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<Product> List()
         {
-            throw new NotImplementedException();
+            return ProductDAO.Instance.List();
         }
 
         public void Remove(Product product)

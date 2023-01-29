@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,26 @@ namespace SaleWPFApp
     /// </summary>
     public partial class AdminManager : Window
     {
-        public AdminManager()
+        private readonly IProductRepository productRepository;
+        public AdminManager(IProductRepository _productRepository)
         {
             InitializeComponent();
+            this.productRepository = _productRepository;
         }
 
         private void Goto_AdminProduct(object sender, MouseButtonEventArgs e)
         {
             headerWelcomeAdmin.Visibility = Visibility.Hidden;
-            AdminProduct adminProduct = new AdminProduct();
+            AdminProduct adminProduct = new AdminProduct(productRepository);
             frameMain.Content = adminProduct;
+        }
+
+
+        private void Goto_AdminCategory(object sender, MouseButtonEventArgs e)
+        {
+            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            AdminCategory adminCategory = new AdminCategory();
+            frameMain.Content = adminCategory;
         }
 
         private void Goto_AdminMember(object sender, MouseButtonEventArgs e)

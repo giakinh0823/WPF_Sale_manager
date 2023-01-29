@@ -28,6 +28,24 @@ namespace DataAccess
             }
         }
 
+        public IEnumerable<Product> List()
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                using (var SaleManagerContext = new SaleManagerContext())
+                {
+                    products = SaleManagerContext.Products.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+            return products;
+        }
+
         public Product FindOne(Expression<Func<Product, bool>> predicate)
         {
             Product product = null;

@@ -22,9 +22,15 @@ namespace SaleWPFApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IProductRepository productRepository;
+        private readonly IMemberRepository memberRepository;
+        private readonly IOrderRepository orderRepository;
+        public MainWindow(IProductRepository _productRepository, IMemberRepository _memberRepository, IOrderRepository _orderRepository)
         {
             InitializeComponent();
+            this.productRepository = _productRepository;
+            this.memberRepository = _memberRepository;
+            this.orderRepository = _orderRepository;
         }
 
         private void Btn_login(object sender, RoutedEventArgs e)
@@ -37,7 +43,7 @@ namespace SaleWPFApp
                 if (username.Equals(account["username"]) && password.Equals(account["password"]))
                 {
                     this.Hide();
-                    AdminManager adminManager = new AdminManager();
+                    AdminManager adminManager = new AdminManager(productRepository);
                     adminManager.Show();
                 }
                 else
