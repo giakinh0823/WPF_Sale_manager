@@ -82,7 +82,7 @@ namespace SaleWPFApp
 
         }
 
-        private void Button_EditaProduct(object sender, RoutedEventArgs e)
+        private void Button_EditProduct(object sender, RoutedEventArgs e)
         {
 
         }

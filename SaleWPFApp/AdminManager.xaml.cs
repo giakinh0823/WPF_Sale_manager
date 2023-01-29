@@ -29,7 +29,7 @@ namespace SaleWPFApp
 
         private void Goto_AdminProduct(object sender, MouseButtonEventArgs e)
         {
-            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            logo.Visibility = Visibility.Hidden;
             AdminProduct adminProduct = new AdminProduct(productRepository);
             frameMain.Content = adminProduct;
         }
@@ -37,20 +37,20 @@ namespace SaleWPFApp
 
         private void Goto_AdminCategory(object sender, MouseButtonEventArgs e)
         {
-            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            logo.Visibility = Visibility.Hidden;
             AdminCategory adminCategory = new AdminCategory();
             frameMain.Content = adminCategory;
         }
 
         private void Goto_AdminMember(object sender, MouseButtonEventArgs e)
         {
-            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            logo.Visibility = Visibility.Hidden;
             AdminMember adminMember = new AdminMember();
             frameMain.Content = adminMember;
         }
         private void Goto_AdminOrder(object sender, MouseButtonEventArgs e)
         {
-            headerWelcomeAdmin.Visibility = Visibility.Hidden;
+            logo.Visibility = Visibility.Hidden;
             AdminOrder adminOrder = new AdminOrder();
             frameMain.Content = adminOrder;
         }

@@ -14,7 +14,10 @@
             <Grid DockPanel.Dock="Top" Height="40">
                 <Border Padding="10 0">
                     <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                        <TextBlock Style="{StaticResource ResourceKey=headingSecorndary}">FStore</TextBlock>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="static/logo/logo.png" Width="50" Height="30" Margin="0 0 5 0"/>
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource ResourceKey=headingSecorndary}">FStore</TextBlock>
+                        </StackPanel>
                         <Button Content="Logout" Background="Transparent" BorderThickness="0" Width="50" HorizontalAlignment="Right"/>
                     </DockPanel>
                 </Border>
@@ -34,9 +37,7 @@
                 </TreeView>
             </Grid>
             <Grid>
-                <TextBlock x:Name="headerWelcomeAdmin" Margin="0 0 0 50"  FontWeight="Light" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource ResourceKey=headingPrimary}">
-                    Welcome to FStore Admin
-                </TextBlock>
+                <Image x:Name="logo" Source="static/logo/logo.png" Width="300" Height="200" Margin="0 0 5 0"/>
                 <Frame x:Name="frameMain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
             </Grid>
         </DockPanel>
