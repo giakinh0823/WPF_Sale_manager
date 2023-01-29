@@ -1,7 +1,9 @@
-﻿using DataAccess.Repository;
+﻿using BusinessObject.Model;
+using DataAccess.Repository;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,7 @@ namespace SaleWPFApp
         {
             InitializeComponent();
             this.productRepository = _productRepository;
+            this.listView.SelectionChanged += ListView_SelectionChanged;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -77,12 +80,33 @@ namespace SaleWPFApp
 
         private void Button_DeleteProduct(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult messageBoxResult = MessageBox.Show("Remove product", "Do you wan't remove product seledted?", MessageBoxButton.YesNo);
+            if(messageBoxResult == MessageBoxResult.Yes)
+            {
+                List<Product> products = listView.SelectedItems.Cast<Product>().ToList();
+                products.ForEach(product => productRepository.Remove(product));
+                listView.ItemsSource = productRepository.List();
+            }
         }
 
         private void Button_EditProduct(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = listView.SelectedItems.Count;
+            if (count > 0)
+            {
+                btnEdit.IsEnabled = true;
+                btnDelete.IsEnabled = true;
+            }
         }
     }
 }

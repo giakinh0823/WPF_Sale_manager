@@ -39,13 +39,13 @@
                     </Button>
                 </WrapPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
-                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_ReloadProduct">
+                    <Button x:Name="btnReload" Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_ReloadProduct">
                         Reload
                     </Button>
-                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_DeleteProduct">
+                    <Button x:Name="btnDelete" IsEnabled="False" Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_DeleteProduct">
                         Delete
                     </Button>
-                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_EditProduct">
+                    <Button x:Name="btnEdit" IsEnabled="False" Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_EditProduct">
                         Edit
                     </Button>
                     <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 0 0" Click="Button_OpenProductCreate">
@@ -58,6 +58,7 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <EventSetter Event="Selected" Handler="ListViewItem_Selected"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.View>

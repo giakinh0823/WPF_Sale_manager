@@ -37,7 +37,7 @@ namespace DataAccess.Repository
 
         public void Remove(Product product)
         {
-            throw new NotImplementedException();
+            ProductDAO.Instance.Delete(product);
         }
 
         public void Update(Product product)
