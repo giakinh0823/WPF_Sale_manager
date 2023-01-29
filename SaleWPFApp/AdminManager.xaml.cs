@@ -12,12 +12,20 @@ namespace SaleWPFApp
         private readonly IProductRepository productRepository;
         private readonly IMemberRepository memberRepository;
         private readonly IOrderRepository orderRepository;
-        public AdminManager(IProductRepository _productRepository, IMemberRepository _memberRepository, IOrderRepository _orderRepository)
+        private readonly MainWindow mainWindow;
+        public AdminManager(MainWindow _mainWindow, IProductRepository _productRepository, IMemberRepository _memberRepository, IOrderRepository _orderRepository)
         {
             InitializeComponent();
             this.productRepository = _productRepository;
             this.memberRepository = _memberRepository;
             this.orderRepository = _orderRepository;
+            this.mainWindow = _mainWindow;
+            Closing += AdminManager_Closing;
+        }
+
+        private void AdminManager_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mainWindow.Show();
         }
 
         private void Goto_AdminProduct(object sender, MouseButtonEventArgs e)
@@ -38,6 +46,12 @@ namespace SaleWPFApp
             logo.Visibility = Visibility.Hidden;
             AdminOrder adminOrder = new AdminOrder();
             frameMain.Content = adminOrder;
+        }
+
+        private void Button_Logout(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            mainWindow.Show();
         }
     }
 }

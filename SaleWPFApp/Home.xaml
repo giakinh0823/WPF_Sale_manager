@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
+        Title="Home" Height="650" Width="1200">
+    <Window.Resources>
+        <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <Border Padding="10 0">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Image Source="Resource/logo/logo.png" Width="50" Height="30" Margin="0 0 5 0"></Image>
+                        </StackPanel>
+                        <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="Resource/icon/shopping-cart.png" Height="30" Width="30"></Image>
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 0 0 0">
+                                    <Border CornerRadius="10" Background="OrangeRed" Padding="6 2">
+                                        <TextBlock FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">0</TextBlock>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </DockPanel>
+                </Border>
+            </Grid>
+            <Grid DockPanel.Dock="Left" Width="200" Background="Aqua">
+                
+            </Grid>
+            <Grid DockPanel.Dock="Right">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        
+                    </StackPanel>
+                    <Grid>
+                        
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>

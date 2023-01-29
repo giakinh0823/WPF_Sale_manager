@@ -19,9 +19,17 @@ namespace SaleWPFApp
     /// </summary>
     public partial class Home : Window
     {
-        public Home()
+        private readonly MainWindow mainWindow;
+        public Home(MainWindow _mainWindow)
         {
             InitializeComponent();
+            Closing += Home_Closing;
+            this.mainWindow = _mainWindow;
+        }
+
+        private void Home_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mainWindow.Show();
         }
     }
 }

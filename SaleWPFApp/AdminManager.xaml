@@ -18,7 +18,7 @@
                             <Image Source="Resource/logo/logo.png" Width="50" Height="30" Margin="0 0 5 0"></Image>
                             <TextBlock VerticalAlignment="Center" Style="{StaticResource ResourceKey=headingSecorndary}">FStore</TextBlock>
                         </StackPanel>
-                        <Button Content="Logout" Background="Transparent" BorderThickness="0" Width="50" HorizontalAlignment="Right"/>
+                        <Button Content="Logout" Background="Transparent" BorderThickness="0" Width="50" HorizontalAlignment="Right" Click="Button_Logout"/>
                     </DockPanel>
                 </Border>
             </Grid>

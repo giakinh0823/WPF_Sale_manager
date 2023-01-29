@@ -33,6 +33,12 @@ namespace SaleWPFApp
             this.orderRepository = _orderRepository;
         }
 
+        public void resetFormLogin()
+        {
+            txtBoxUsername.Text = null;
+            pwdBoxPassword.Password = null;
+        }
+
         private void Btn_login(object sender, RoutedEventArgs e)
         {
             string username = txtBoxUsername.Text.ToString();
@@ -43,14 +49,16 @@ namespace SaleWPFApp
                 if (username.Equals(account["username"]) && password.Equals(account["password"]))
                 {
                     this.Hide();
-                    AdminManager adminManager = new AdminManager(productRepository, memberRepository, orderRepository);
+                    AdminManager adminManager = new AdminManager(this, productRepository, memberRepository, orderRepository);
                     adminManager.Show();
+                    resetFormLogin();
                 }
                 else if (memberRepository.FindByEmailAndPassword(username, password) != null)
                 {
                     this.Hide();
-                    Home home = new Home();
+                    Home home = new Home(this);
                     home.Show();
+                    resetFormLogin();
                 } 
                 else
                 {
