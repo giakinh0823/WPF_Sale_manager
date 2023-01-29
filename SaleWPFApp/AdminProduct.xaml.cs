@@ -53,8 +53,8 @@ namespace SaleWPFApp
             var column1 = 0.1;
             var column2 = 0.2;
             var column3 = 0.1;
-            var column4 = 0.1;
-            var column5 = 0.1;
+            var column4 = 0.2;
+            var column5 = 0.2;
             var column6 = 0.2;
 
             if (gridView != null && width >= 0)
@@ -68,18 +68,18 @@ namespace SaleWPFApp
             }
         }
 
-        private void Button_OpenProductCreate(object sender, RoutedEventArgs e)
+        private void Button_OpenCreate(object sender, RoutedEventArgs e)
         {
             AdminProductCreate adminProductCreate = new AdminProductCreate(this, null, productRepository);
             adminProductCreate.Show();
         }
 
-        private void Button_ReloadProduct(object sender, RoutedEventArgs e)
+        private void Button_Reload(object sender, RoutedEventArgs e)
         {
             listView.ItemsSource = productRepository.List();
         }
 
-        private void Button_DeleteProduct(object sender, RoutedEventArgs e)
+        private void Button_Delete(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Do you wan't remove product seledted?", "Remove product", MessageBoxButton.YesNo);
             if(messageBoxResult == MessageBoxResult.Yes)
@@ -90,7 +90,7 @@ namespace SaleWPFApp
             }
         }
 
-        private void Button_SearchProduct(object sender, RoutedEventArgs e)
+        private void Button_Search(object sender, RoutedEventArgs e)
         {
             int? id = !String.IsNullOrEmpty(searchById.Text) ? int.Parse(searchById.Text) : null;
             string? name = searchByName.Text;
@@ -105,7 +105,7 @@ namespace SaleWPFApp
 
             listView.ItemsSource = productRepository.FindAllBy(productFilter);
         }
-        private void Button_EditProduct(object sender, RoutedEventArgs e)
+        private void Button_Edit(object sender, RoutedEventArgs e)
         {
             int count = listView.SelectedItems.Count;
             if (count > 0)
@@ -116,7 +116,6 @@ namespace SaleWPFApp
                     AdminProductCreate productCreate = new AdminProductCreate(this, product, productRepository);
                     productCreate.Show();
                 });
-                listView.ItemsSource = productRepository.List();
             } else
             {
                 MessageBox.Show("Plase select product");

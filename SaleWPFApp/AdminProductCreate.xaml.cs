@@ -73,10 +73,10 @@ namespace SaleWPFApp
             p.UnitsInStock = unitsInStock;
             if (product != null)
             {
-                productRepository.Update(product);
+                productRepository.Update(p);
             } else
             {
-                productRepository.Add(product);
+                productRepository.Add(p);
             }
             this.Close();
             adminProduct.RefreshListView();

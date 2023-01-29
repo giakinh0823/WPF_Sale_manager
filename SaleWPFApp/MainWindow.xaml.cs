@@ -43,7 +43,7 @@ namespace SaleWPFApp
                 if (username.Equals(account["username"]) && password.Equals(account["password"]))
                 {
                     this.Hide();
-                    AdminManager adminManager = new AdminManager(productRepository);
+                    AdminManager adminManager = new AdminManager(productRepository, memberRepository, orderRepository);
                     adminManager.Show();
                 }
                 else

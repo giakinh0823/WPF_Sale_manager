@@ -11,7 +11,7 @@ namespace DataAccess.Repository
     {
         public void Add(Member member)
         {
-            throw new NotImplementedException();
+            MemberDAO.Instance.Add(member);
         }
 
         public void Delete(Member member)
@@ -31,12 +31,12 @@ namespace DataAccess.Repository
 
         public IEnumerable<Member> List()
         {
-            throw new NotImplementedException();
+            return MemberDAO.Instance.List();
         }
 
         public void Update(Member member)
         {
-            throw new NotImplementedException();
+            MemberDAO.Instance.Update(member);
         }
     }
 }

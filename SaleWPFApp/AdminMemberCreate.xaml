@@ -1,0 +1,35 @@
+﻿<Window x:Class="SaleWPFApp.AdminMemberCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaleWPFApp"
+        mc:Ignorable="d"
+        Title="Member" Height="500" Width="600"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock Margin="0 10 0 20"  FontWeight="Light" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
+              Member Control
+            </TextBlock>
+            <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+                <Label Content="Id" x:Name="labelId" Visibility="Collapsed" IsEnabled="False" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxId" Margin="0 0 0 5" Visibility="Collapsed" IsEnabled="False" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Label Content="Email" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxEmail" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Label Content="CompanyName" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxCompanyName" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Label Content="City" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxCity" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Label Content="Country" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxCountry" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Label Content="Password" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxPassword" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
+                <Button x:Name="btn" Content="Create" Style="{StaticResource ResourceKey=btnPrimary}" Width="100" Margin="0 10 0 5" Click="Button_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
