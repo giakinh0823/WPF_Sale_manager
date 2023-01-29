@@ -46,6 +46,12 @@ namespace SaleWPFApp
                     AdminManager adminManager = new AdminManager(productRepository, memberRepository, orderRepository);
                     adminManager.Show();
                 }
+                else if (memberRepository.FindByEmailAndPassword(username, password) != null)
+                {
+                    this.Hide();
+                    Home home = new Home();
+                    home.Show();
+                } 
                 else
                 {
                     MessageBox.Show("Please enter username and password");

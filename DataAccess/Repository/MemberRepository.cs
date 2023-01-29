@@ -35,7 +35,7 @@ namespace DataAccess.Repository
 
         public Member FindByEmailAndPassword(string email, string password)
         {
-            throw new NotImplementedException();
+            return MemberDAO.Instance.FindOne(member => member.Email== email && member.Password == password);
         }
 
         public Member FindById(int id)
