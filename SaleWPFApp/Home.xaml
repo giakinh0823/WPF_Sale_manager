@@ -30,7 +30,7 @@
                     </DockPanel>
                 </Border>
             </Grid>
-            <Grid DockPanel.Dock="Left" Width="200" Background="Aqua">
+            <Grid DockPanel.Dock="Left" Width="200">
                 
             </Grid>
             <Grid DockPanel.Dock="Right">

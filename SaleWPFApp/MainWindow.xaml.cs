@@ -56,7 +56,7 @@ namespace SaleWPFApp
                 else if (memberRepository.FindByEmailAndPassword(username, password) != null)
                 {
                     this.Hide();
-                    Home home = new Home(this);
+                    Home home = new Home(this, productRepository, orderRepository);
                     home.Show();
                     resetFormLogin();
                 } 
