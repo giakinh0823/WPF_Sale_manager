@@ -52,7 +52,6 @@ namespace SaleWPFApp
             var column4 = 0.1;
             var column5 = 0.1;
             var column6 = 0.2;
-            var column7 = 0.2;
 
             if (gridView != null && width >= 0)
             {
@@ -62,7 +61,6 @@ namespace SaleWPFApp
                 gridView.Columns[3].Width = width * column4;
                 gridView.Columns[4].Width = width * column5;
                 gridView.Columns[5].Width = width * column6;
-                gridView.Columns[6].Width = width * column7;
             }
         }
 

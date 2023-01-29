@@ -13,16 +13,45 @@
     </Page.Resources>
     <Grid Background="White">
         <StackPanel>
-            <TextBlock Margin="0 10 0 10"  FontWeight="Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
+            <TextBlock Margin="0 10 0 20"  FontWeight="Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource ResourceKey=headingPrimary}">
               Products Manager
             </TextBlock>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="100" HorizontalAlignment="Right" Margin="0 0 20 10" Click="Button_ReloadProduct">
-                    Reload
-                </Button>
-                <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="100" HorizontalAlignment="Right" Margin="0 0 20 10" Click="Button_OpenProductCreate">
-                    Add New
-                </Button>
+            <StackPanel Orientation="Vertical">
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                    <StackPanel>
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="Id"/>
+                        <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchBy" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="Name"/>
+                        <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByName" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="UnitPrice"/>
+                        <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByUnitPrice" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="UnitInStock"/>
+                        <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByUnitsInStock" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                    </StackPanel>
+                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        Search
+                    </Button>
+                </WrapPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_ReloadProduct">
+                        Reload
+                    </Button>
+                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_DeleteProduct">
+                        Delete
+                    </Button>
+                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 10 0" Click="Button_EditProduct">
+                        Edit
+                    </Button>
+                    <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Right" Margin="0 0 0 0" Click="Button_OpenProductCreate">
+                        Add New
+                    </Button>
+                </StackPanel>
             </StackPanel>
             <Grid>
                 <ListView x:Name="listView" Width="auto" Grid.Column="0" SizeChanged="ListView_SizeChanged">
@@ -39,16 +68,6 @@
                             <GridViewColumn Header="Weight" Width="100" DisplayMemberBinding="{Binding Path=Weight}"/>
                             <GridViewColumn Header="UnitPrice" Width="100" DisplayMemberBinding="{Binding Path=UnitPrice}"/>
                             <GridViewColumn Header="UnitsInStock" Width="200" DisplayMemberBinding="{Binding Path=UnitsInStock}"/>
-                            <GridViewColumn Header="Action" Width="200">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Content="Delete" Margin="0" VerticalAlignment="Center" Padding="10 2" FontSize="12" Click="Button_DeleteProduct" Style="{StaticResource ResourceKey=btnPrimary}" />
-                                            <Button Content="Edit" Margin="0" VerticalAlignment="Center" Padding="10 2" FontSize="12" Click="Button_EditProduct" Style="{StaticResource ResourceKey=btnPrimary}" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
