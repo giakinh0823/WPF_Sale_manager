@@ -135,6 +135,10 @@ namespace SaleWPFApp
             {
                 btnEdit.IsEnabled = true;
                 btnDelete.IsEnabled = true;
+            } else
+            {
+                btnEdit.IsEnabled = false;
+                btnDelete.IsEnabled = false;
             }
         }
     }

@@ -56,7 +56,7 @@ namespace DataAccess.Repository
 
         public void Update(Product product)
         {
-            throw new NotImplementedException();
+            ProductDAO.Instance.Update(product);
         }
     }
 }

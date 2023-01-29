@@ -58,13 +58,26 @@ namespace SaleWPFApp
             decimal unitPrice = decimal.Parse(txtBoxUnitPrice.Text);
             int unitsInStock = int.Parse(txtBoxUnitInStock.Text);
 
-            Product product= new Product();
-            product.ProductName = name;
-            product.CategoryId = categoryId;
-            product.Weight = weight;
-            product.UnitPrice = unitPrice;
-            product.UnitsInStock = unitsInStock;
-            productRepository.Add(product);
+            Product? p = null;
+            if (product != null) {
+                p = product;
+            } 
+            else
+            {
+                p = new Product();
+            }
+            p.ProductName = name;
+            p.CategoryId = categoryId;
+            p.Weight = weight;
+            p.UnitPrice = unitPrice;
+            p.UnitsInStock = unitsInStock;
+            if (product != null)
+            {
+                productRepository.Update(product);
+            } else
+            {
+                productRepository.Add(product);
+            }
             this.Close();
             adminProduct.RefreshListView();
         }
