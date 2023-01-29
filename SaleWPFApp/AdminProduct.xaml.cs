@@ -70,7 +70,7 @@ namespace SaleWPFApp
 
         private void Button_OpenProductCreate(object sender, RoutedEventArgs e)
         {
-            AdminProductCreate adminProductCreate = new AdminProductCreate(this, productRepository);
+            AdminProductCreate adminProductCreate = new AdminProductCreate(this, null, productRepository);
             adminProductCreate.Show();
         }
 
@@ -107,7 +107,20 @@ namespace SaleWPFApp
         }
         private void Button_EditProduct(object sender, RoutedEventArgs e)
         {
-
+            int count = listView.SelectedItems.Count;
+            if (count > 0)
+            {
+                List<Product> products = listView.SelectedItems.Cast<Product>().ToList();
+                products.ForEach(product =>
+                {
+                    AdminProductCreate productCreate = new AdminProductCreate(this, product, productRepository);
+                    productCreate.Show();
+                });
+                listView.ItemsSource = productRepository.List();
+            } else
+            {
+                MessageBox.Show("Plase select product");
+            }
         }
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)

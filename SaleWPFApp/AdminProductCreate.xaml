@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="Product Control" Height="500" Width="600">
+        Title="Product Control" Height="500" Width="600"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
     </Window.Resources>
@@ -15,6 +16,8 @@
               Product Control
             </TextBlock>
             <StackPanel Background="white" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+                <Label Content="Id" x:Name="labelId" Visibility="Collapsed" IsEnabled="False" Style="{StaticResource ResourceKey=labelPrimary}"/>
+                <TextBox x:Name="txtBoxId" Margin="0 0 0 5" Visibility="Collapsed" IsEnabled="False" Style="{StaticResource ResourceKey=texboxPrimary}"/>
                 <Label Content="Name" Style="{StaticResource ResourceKey=labelPrimary}"/>
                 <TextBox x:Name="txtBoxName" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
                 <Label Content="Weight" Style="{StaticResource ResourceKey=labelPrimary}"/>
@@ -25,7 +28,7 @@
                 <TextBox x:Name="txtBoxUnitPrice" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
                 <Label Content="UnitInStock" Style="{StaticResource ResourceKey=labelPrimary}"/>
                 <TextBox x:Name="txtBoxUnitInStock" Margin="0 0 0 5" Style="{StaticResource ResourceKey=texboxPrimary}"/>
-                <Button Content="Create" Style="{StaticResource ResourceKey=btnPrimary}" Width="100" Margin="0 10 0 5" Click="Button_Click"></Button>
+                <Button x:Name="btn" Content="Create" Style="{StaticResource ResourceKey=btnPrimary}" Width="100" Margin="0 10 0 5" Click="Button_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

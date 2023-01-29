@@ -23,12 +23,31 @@ namespace SaleWPFApp
     {
         private readonly IProductRepository productRepository;
         private readonly AdminProduct adminProduct;
+        private Product? product;
 
-        public AdminProductCreate(AdminProduct _adminProduct, IProductRepository _productRepository)
+        public AdminProductCreate(AdminProduct _adminProduct, Product? product,  IProductRepository _productRepository)
         {
             InitializeComponent();
             this.productRepository = _productRepository;
             this.adminProduct = _adminProduct;
+            this.product = product;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(product != null)
+            {
+                txtBoxName.Text = product.ProductName;
+                txtBoxCategory.Text = product.CategoryId.ToString();
+                txtBoxUnitPrice.Text = product.UnitPrice.ToString();
+                txtBoxWeight.Text = product.Weight;
+                txtBoxUnitInStock.Text = product.UnitsInStock.ToString();
+                txtBoxId.Text = product.ProductId.ToString();
+                txtBoxId.Visibility= Visibility.Visible;
+                labelId.Visibility = Visibility.Visible;
+                btn.Content = "Update";
+                this.Height = 550;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
