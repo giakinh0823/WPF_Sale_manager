@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace DataAccess.Repository
         void Delete(Member member);
         Member FindById(int id);
         Member FindByEmailAndPassword(string email,string password);
+        IEnumerable<Member> FindAllBy(MemberFilter filter);
     }
 }

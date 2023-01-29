@@ -98,7 +98,7 @@ namespace DataAccess
             return member;
         }
 
-        public static IEnumerable<Member> FindAll(Expression<Func<Member, bool>> predicate)
+        public IEnumerable<Member> FindAll(Expression<Func<Member, bool>> predicate)
         {
             List<Member> members = new List<Member>();
             try

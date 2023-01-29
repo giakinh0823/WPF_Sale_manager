@@ -4,17 +4,10 @@ using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Xml.Linq;
+
 
 namespace SaleWPFApp
 {
@@ -79,11 +72,31 @@ namespace SaleWPFApp
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Do you wan't remove member seledted?", "Remove member", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                List<Member> members = listView.SelectedItems.Cast<Member>().ToList();
+                members.ForEach(member => memberRepository.Delete(member));
+                listView.ItemsSource = memberRepository.List();
+            }
         }
 
         private void Button_Search(object sender, RoutedEventArgs e)
         {
+            int? id = !String.IsNullOrEmpty(searchById.Text) ? int.Parse(searchById.Text) : null;
+            string email = searchByEmail.Text;
+            string companyName = searchByCompanyName.Text;
+            string city = searchByCity.Text;
+            string country = searchByCountry.Text;
 
+            MemberFilter memberFilter = new MemberFilter();
+            memberFilter.MemberId = id;
+            memberFilter.Email = email;
+            memberFilter.CompanyName = companyName;
+            memberFilter.City = city;
+            memberFilter.Country = country;
+
+            listView.ItemsSource = memberRepository.FindAllBy(memberFilter);
         }
         private void Button_Edit(object sender, RoutedEventArgs e)
         {

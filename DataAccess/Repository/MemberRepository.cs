@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,20 @@ namespace DataAccess.Repository
 
         public void Delete(Member member)
         {
-            throw new NotImplementedException();
+            MemberDAO.Instance.Delete(member);
+        }
+
+        public IEnumerable<Member> FindAllBy(MemberFilter filter)
+        {
+            if (filter != null)
+            {
+                return MemberDAO.Instance.FindAll(member => (filter.MemberId == null || member.MemberId.Equals(filter.MemberId)) &&
+                                                              (filter.Email == null || member.Email.ToLower().Contains(filter.Email.ToLower())) &&
+                                                              (filter.CompanyName == null || member.CompanyName.ToLower().Contains(filter.CompanyName.ToLower())) &&
+                                                              (filter.City == null || member.City.ToLower().Contains(filter.City.ToLower())) &&
+                                                              (filter.Country == null || member.Country.ToLower().Contains(filter.Country.ToLower())));
+            }
+            return List();
         }
 
         public Member FindByEmailAndPassword(string email, string password)
