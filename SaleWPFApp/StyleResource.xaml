@@ -49,7 +49,7 @@
     <!-- Tree View -->
     <Style TargetType="{x:Type TreeViewItem}" x:Key="treeViewItemMenuPrimary">
         <Setter Property="FontSize" Value="20"></Setter>
-        <Setter Property="Foreground" Value="#FF1862DA"></Setter>
+        <Setter Property="Foreground" Value="OrangeRed"></Setter>
         <Setter Property="FontWeight" Value="Light"></Setter>
         <Setter Property="Margin" Value="0 0 0 10"></Setter>
     </Style>
