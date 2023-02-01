@@ -30,16 +30,77 @@
                     </DockPanel>
                 </Border>
             </Grid>
-            <Grid DockPanel.Dock="Left" Width="200">
-                
+            <Grid DockPanel.Dock="Left" Width="300">
+                <Border Padding="10 5">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <StackPanel>
+                            <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="Id"/>
+                            <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchById" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="Name"/>
+                            <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByName" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="UnitPrice"/>
+                            <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByUnitPrice" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Style="{StaticResource ResourceKey=labelPrimary}" Height="auto" Content="UnitInStock"/>
+                            <TextBox Style="{StaticResource ResourceKey=texboxPrimary}" x:Name="searchByUnitsInStock" Width="200" Height="30" Margin="0 0 5 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="10 10">
+                            <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="80" Height="30" Padding="5 4" HorizontalAlignment="Center" Click="Button_Search">
+                                Search
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
             </Grid>
             <Grid DockPanel.Dock="Right">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        
-                    </StackPanel>
                     <Grid>
-                        
+                        <ScrollViewer Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1" Height="600">
+                            <StackPanel>
+                                <TextBlock Text="Products" Margin="10" FontSize="22" FontWeight="Medium"/>
+                                <StackPanel Margin="20 0">
+                                    <ItemsControl x:Name="ListProduct">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Margin="10" Width="110">
+                                                    <StackPanel>
+                                                        <Border Width="100" Height="100" CornerRadius="5" Margin="5">
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="1"/>
+                                                            </Border.Effect>
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource="Resource\images\iphone.png"/>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <TextBlock Margin="5" Text="{Binding UnitPrice, StringFormat={}{0:C}}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                                        <TextBlock Margin="5 0" Text="{Binding ProductName}" FontSize="20"/>
+                                                        <StackPanel Margin="5 0" Orientation="Horizontal">
+                                                            <TextBlock FontSize="15">Weight: </TextBlock>
+                                                            <TextBlock Margin="5 0" Text="{Binding Weight}" FontSize="15"/>
+                                                        </StackPanel>
+                                                        <StackPanel Margin="5 0" Orientation="Horizontal">
+                                                            <TextBlock FontSize="15">UnitsInStock: </TextBlock>
+                                                            <TextBlock Text="{Binding UnitsInStock}" FontSize="15"/>
+                                                        </StackPanel>
+                                                        <Button Style="{StaticResource ResourceKey=btnPrimary}">Buy</Button>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
                 </StackPanel>
             </Grid>

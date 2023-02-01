@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Resource\icon\shopping-cart.png" />
+    <None Remove="Resource\images\iphone.png" />
     <None Remove="Resource\logo\logo.png" />
   </ItemGroup>
 
@@ -26,6 +27,9 @@
     <Resource Include="Resource\icon\shopping-cart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\images\iphone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\logo\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -35,10 +39,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resource\images\" />
   </ItemGroup>
 
 </Project>
