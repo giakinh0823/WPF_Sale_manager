@@ -87,7 +87,7 @@
                                                             <TextBlock FontSize="15">UnitsInStock: </TextBlock>
                                                             <TextBlock Text="{Binding UnitsInStock}" FontSize="15"/>
                                                         </StackPanel>
-                                                        <Button Style="{StaticResource ResourceKey=btnPrimary}">Buy</Button>
+                                                        <Button Style="{StaticResource ResourceKey=btnPrimary}" Click="Button_Buy">Buy</Button>
                                                     </StackPanel>
                                                 </Border>
                                             </DataTemplate>

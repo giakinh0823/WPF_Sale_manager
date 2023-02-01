@@ -55,5 +55,10 @@ namespace SaleWPFApp
 
             ListProduct.ItemsSource = productRepository.FindAllBy(productFilter);
         }
+
+        private void Button_Buy(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
