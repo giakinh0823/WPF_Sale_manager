@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SaleWPFApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminOrder"
+      Title="Order control"
       Loaded="Page_Loaded">
     <Page.Resources>
         <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resource\icon\history.png" />
     <None Remove="Resource\icon\shopping-cart.png" />
     <None Remove="Resource\images\iphone.png" />
     <None Remove="Resource\logo\logo.png" />
@@ -24,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resource\icon\history.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\icon\shopping-cart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
