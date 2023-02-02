@@ -17,16 +17,25 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <Image Source="Resource/logo/logo.png" Width="50" Height="30" Margin="0 0 5 0"></Image>
                         </StackPanel>
-                        <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Click="Button_OpenOrder">
-                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Image Source="Resource/icon/shopping-cart.png" Height="30" Width="30"></Image>
-                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 0 0 0">
-                                    <Border CornerRadius="10" Background="OrangeRed" Padding="6 2">
-                                        <TextBlock x:Name="CartCount" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">0</TextBlock>
-                                    </Border>
-                                </Grid>
-                            </Grid>
-                        </Button>
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Click="Button_OpenOrder">
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Image Source="Resource/icon/shopping-cart.png" Height="30" Width="30"></Image>
+                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 0 0 0">
+                                            <Border CornerRadius="10" Background="OrangeRed" Padding="6 2">
+                                                <TextBlock x:Name="CartCount" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">0</TextBlock>
+                                            </Border>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                                <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Margin="20 0 0 0" Click="Button_OpenMyOrder">
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Image Source="Resource/icon/history.png" Height="30" Width="30"></Image>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
                     </DockPanel>
                 </Border>
             </Grid>

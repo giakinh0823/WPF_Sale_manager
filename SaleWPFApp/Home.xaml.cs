@@ -26,7 +26,6 @@ namespace SaleWPFApp
         private readonly IOrderRepository orderRepository;
         private readonly IMemberRepository memberRepository;
         private readonly MainWindow mainWindow;
-        private List<Order> orders;
         public Home(MainWindow _mainWindow, IProductRepository _productRepository, IOrderRepository _orderRepository, IMemberRepository _memberRepository)
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace SaleWPFApp
             this.productRepository = _productRepository;
             this.orderRepository = _orderRepository;
             this.memberRepository = _memberRepository;
-            orders = orderRepository.FindByEmail(Session.Username).ToList();
             ListProduct.ItemsSource = productRepository.List();
             Session.carts = new List<OrderDetail>();
             UpdateCartQuantity();
@@ -109,5 +107,10 @@ namespace SaleWPFApp
             CartCount.Text = Session.carts.Sum(product => product.Quantity).ToString();
         }
 
+        private void Button_OpenMyOrder(object sender, RoutedEventArgs e)
+        {
+            MyOrderWindown myOrderWindown = new MyOrderWindown(orderRepository, memberRepository);
+            myOrderWindown.Show();
+        }
     }
 }
