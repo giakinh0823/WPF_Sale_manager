@@ -91,8 +91,8 @@ namespace SaleWPFApp
 
         private void Button_OpenOrder(object sender, RoutedEventArgs e)
         {
-            OrderWindown orderWindow = new OrderWindown();
-            orderWindow.Show();
+            CartWindown cartWindown = new CartWindown();
+            cartWindown.Show();
         }
 
     }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SaleWPFApp
 {
     /// <summary>
-    /// Interaction logic for OrderWindown.xaml
+    /// Interaction logic for CartWindown.xaml
     /// </summary>
-    public partial class OrderWindown : Window
+    public partial class CartWindown : Window
     {
-        public OrderWindown()
+        public CartWindown()
         {
             InitializeComponent();
         }
