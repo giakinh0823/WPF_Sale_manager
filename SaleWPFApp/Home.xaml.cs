@@ -24,19 +24,21 @@ namespace SaleWPFApp
     {
         private readonly IProductRepository productRepository;
         private readonly IOrderRepository orderRepository;
+        private readonly IMemberRepository memberRepository;
         private readonly MainWindow mainWindow;
         private List<Order> orders;
-        public Home(MainWindow _mainWindow, IProductRepository _productRepository, IOrderRepository _orderRepository)
+        public Home(MainWindow _mainWindow, IProductRepository _productRepository, IOrderRepository _orderRepository, IMemberRepository _memberRepository)
         {
             InitializeComponent();
             Closing += Home_Closing;
             this.mainWindow = _mainWindow;
             this.productRepository = _productRepository;
             this.orderRepository = _orderRepository;
+            this.memberRepository = _memberRepository;
             orders = orderRepository.FindByEmail(Session.Username).ToList();
             ListProduct.ItemsSource = productRepository.List();
             Session.carts = new List<OrderDetail>();
-            CartCount.Text = Session.carts.Count.ToString();
+            UpdateCartQuantity();
         }
 
         private void Home_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -82,17 +84,29 @@ namespace SaleWPFApp
                     }
                     else
                     {
-                        Session.carts.Add(orderDetail);
+                        int index = Session.carts.FindIndex(cart => cart.ProductId == orderDetail.ProductId);
+                        if(index == -1)
+                        {
+                            Session.carts.Add(orderDetail);
+                        } else
+                        {
+                            Session.carts[index].Quantity++;
+                        }
                     }
                 }
             }
-            CartCount.Text = Session.carts.Count.ToString();
+            UpdateCartQuantity();
         }
 
         private void Button_OpenOrder(object sender, RoutedEventArgs e)
         {
-            CartWindown cartWindown = new CartWindown();
+            CartWindown cartWindown = new CartWindown(this, orderRepository, memberRepository);
             cartWindown.Show();
+        }
+
+        public void UpdateCartQuantity()
+        {
+            CartCount.Text = Session.carts.Sum(product => product.Quantity).ToString();
         }
 
     }

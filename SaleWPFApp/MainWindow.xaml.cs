@@ -59,7 +59,7 @@ namespace SaleWPFApp
                 {
                     Session.Username = username;
                     this.Hide();
-                    Home home = new Home(this, productRepository, orderRepository);
+                    Home home = new Home(this, productRepository, orderRepository, memberRepository);
                     home.Show();
                     resetFormLogin();
                 } 

@@ -43,6 +43,11 @@ namespace DataAccess.Repository
             throw new NotImplementedException();
         }
 
+        public Member FindByEmail(string email)
+        {
+            return MemberDAO.Instance.FindOne(member => member.Email == email);
+        }
+
         public IEnumerable<Member> List()
         {
             return MemberDAO.Instance.List();

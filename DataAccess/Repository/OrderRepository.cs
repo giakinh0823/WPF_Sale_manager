@@ -11,7 +11,7 @@ namespace DataAccess.Repository
     {
         public void Add(Order order)
         {
-            throw new NotImplementedException();
+            OrderDAO.Instance.Add(order);
         }
 
         public IEnumerable<Order> FindAllByStartTimeAndEndTime(DateTime start, DateTime end)

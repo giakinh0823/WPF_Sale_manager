@@ -15,6 +15,7 @@ namespace DataAccess.Repository
         void Update(Member member);
         void Delete(Member member);
         Member FindById(int id);
+        Member FindByEmail(string email);
         Member FindByEmailAndPassword(string email,string password);
         IEnumerable<Member> FindAllBy(MemberFilter filter);
     }

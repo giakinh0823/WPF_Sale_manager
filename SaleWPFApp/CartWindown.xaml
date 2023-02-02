@@ -5,13 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleWPFApp"
         mc:Ignorable="d"
-        Title="CartWindown" Height="450" Width="800">
+        Title="CartWindown" Height="450" Width="1000">
     <Window.Resources>
         <ResourceDictionary Source="StyleResource.xaml"></ResourceDictionary>
     </Window.Resources>
     <Grid Background="White">
-        <TextBlock Margin="0 0 0 50"  FontWeight="Light" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource ResourceKey=headingPrimary}">
-              Welcome to FStore Cart
-        </TextBlock>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Margin="0 0 10 0" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" FontSize="10" Margin="0"  Content="Required Date"/>
+                        <DatePicker Name="RequiredDate" Height="25"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Style="{StaticResource ResourceKey=labelPrimary}" FontSize="10" Margin="0"  Content="Shipped Date"/>
+                        <DatePicker Name="ShippedDate" Height="25"></DatePicker>
+                    </StackPanel>
+                </StackPanel>
+                <Button Style="{StaticResource ResourceKey=btnPrimary}" Width="100" Margin="10 10" Click="Button_Checkout">Checkout</Button>
+            </StackPanel>
+            <Grid>
+                <ListView MaxHeight="400" x:Name="listView" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" Width="auto" Grid.Column="0" SizeChanged="ListView_SizeChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ProductId" Width="200" DisplayMemberBinding="{Binding Path=ProductId }"/>
+                            <GridViewColumn Header="ProductName" Width="200" DisplayMemberBinding="{Binding Path=Product.ProductName}"/>
+                            <GridViewColumn Header="UnitPrice" Width="200" DisplayMemberBinding="{Binding Path=UnitPrice }"/>
+                            <GridViewColumn Header="Discount" Width="100" DisplayMemberBinding="{Binding Path=Discount}"/>
+                            <GridViewColumn Header="Quantity" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                            <Button Tag="{Binding ProductId}" Width="20" Click="Button_Plus">+</Button>
+                                            <TextBlock Text="{Binding Quantity}" Margin="5 0 5 0"></TextBlock>
+                                            <Button Tag="{Binding ProductId}" Width="20" Click="Button_Minus">-</Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Action" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Button_Remove" Tag="{Binding ProductId}" Style="{StaticResource ResourceKey=btnPrimary}" Width="100">Remove</Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <StackPanel Margin="10 10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock FontSize="20" Margin="0 0 10 0">Total: </TextBlock>
+                <TextBlock FontSize="20" x:Name="TxtBoxTotalPrice"></TextBlock>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
