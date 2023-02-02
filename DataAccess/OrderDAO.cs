@@ -30,6 +30,25 @@ namespace DataAccess
             }
         }
 
+        public IEnumerable<Order> List()
+        {
+            List<Order> orders = new List<Order>();
+            try
+            {
+                using (var SaleManagerContext = new SaleManagerContext())
+                {
+                    orders = SaleManagerContext.Orders.ToList().OrderByDescending(order => order.OrderId).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+            return orders;
+        }
+
+
         public Order FindOne(Expression<Func<Order, bool>> predicate)
         {
             Order order = null;
@@ -50,16 +69,9 @@ namespace DataAccess
         public IEnumerable<Order> FindAll(Expression<Func<Order, bool>> predicate)
         {
             List<Order> orders = new List<Order>();
-            try
+            using (var saleManagerContext = new SaleManagerContext())
             {
-                using (var saleManagerContext = new SaleManagerContext())
-                {
-                    orders = saleManagerContext.Orders.Where(predicate).ToList();
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
+                orders = saleManagerContext.Orders.Where(predicate).ToList();
             }
             return orders;
         }
@@ -68,7 +80,7 @@ namespace DataAccess
         {
             try
             {
-                Order p = FindOne(item => item.OrderId.Equals(order.MemberId));
+                Order p = FindOne(item => item.OrderId.Equals(order.OrderId));
                 if (p == null)
                 {
                     using (var saleManagement = new SaleManagerContext())

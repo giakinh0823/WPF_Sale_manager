@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Model;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<Order> List()
         {
-            throw new NotImplementedException();
+            return OrderDAO.Instance.List();
         }
 
         public void Remove(Order order)
@@ -43,5 +44,17 @@ namespace DataAccess.Repository
         {
             throw new NotImplementedException();
         }
+
+        IEnumerable<Order> IOrderRepository.FindAllBy(OrderFilter filter)
+        {
+            if(filter != null)
+            {
+                return OrderDAO.Instance.FindAll(order => (filter.StartDate == null || order.OrderDate >= filter.StartDate) &&
+                                                              (filter.EndDate == null || order.OrderDate <= filter.EndDate) ||
+                                                              (filter.StartDate != null && filter.EndDate != null && order.OrderDate >= filter.StartDate && order.OrderDate <= filter.EndDate)).OrderByDescending(order => order.OrderDate).ToList();
+            }
+            return List();
+        }
+
     }
 }

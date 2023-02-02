@@ -44,7 +44,7 @@ namespace SaleWPFApp
         private void Goto_AdminOrder(object sender, MouseButtonEventArgs e)
         {
             logo.Visibility = Visibility.Hidden;
-            AdminOrder adminOrder = new AdminOrder();
+            AdminOrder adminOrder = new AdminOrder(orderRepository);
             frameMain.Content = adminOrder;
         }
 
