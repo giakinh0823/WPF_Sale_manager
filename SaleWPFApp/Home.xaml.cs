@@ -25,6 +25,7 @@ namespace SaleWPFApp
         private readonly IProductRepository productRepository;
         private readonly IOrderRepository orderRepository;
         private readonly MainWindow mainWindow;
+        private List<Order> orders;
         public Home(MainWindow _mainWindow, IProductRepository _productRepository, IOrderRepository _orderRepository)
         {
             InitializeComponent();
@@ -32,7 +33,10 @@ namespace SaleWPFApp
             this.mainWindow = _mainWindow;
             this.productRepository = _productRepository;
             this.orderRepository = _orderRepository;
+            orders = orderRepository.FindByEmail(Session.Username).ToList();
             ListProduct.ItemsSource = productRepository.List();
+            Session.carts = new List<OrderDetail>();
+            CartCount.Text = Session.carts.Count.ToString();
         }
 
         private void Home_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -56,9 +60,33 @@ namespace SaleWPFApp
             ListProduct.ItemsSource = productRepository.FindAllBy(productFilter);
         }
 
-        private void Button_Buy(object sender, RoutedEventArgs e)
+        private void AddToCart(object sender, RoutedEventArgs e)
         {
-
+            Button? button = (Button)sender;
+            if (button != null)
+            {
+                var tag = button.Tag;
+                if(!string.IsNullOrEmpty(tag.ToString()))
+                {
+                    int id = int.Parse(tag.ToString());
+                    Product product = productRepository.FindById(id);
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.ProductId = product.ProductId;
+                    orderDetail.UnitPrice = product.UnitPrice;
+                    orderDetail.Quantity = 1;
+                    orderDetail.Product = product;
+                    orderDetail.Discount = Config.Discount;
+                    if (Session.carts == null)
+                    {
+                        Session.carts = new List<OrderDetail> { orderDetail };
+                    }
+                    else
+                    {
+                        Session.carts.Add(orderDetail);
+                    }
+                }
+            }
+            CartCount.Text = Session.carts.Count.ToString();
         }
 
         private void Button_OpenOrder(object sender, RoutedEventArgs e)
@@ -66,5 +94,6 @@ namespace SaleWPFApp
             OrderWindown orderWindow = new OrderWindown();
             orderWindow.Show();
         }
+
     }
 }

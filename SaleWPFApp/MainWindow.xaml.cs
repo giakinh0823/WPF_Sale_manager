@@ -1,4 +1,5 @@
-﻿using DataAccess.Repository;
+﻿using BusinessObject.Model;
+using DataAccess.Repository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace SaleWPFApp
             {
                 if (username.Equals(account["username"]) && password.Equals(account["password"]))
                 {
+                    Session.Username = username;
                     this.Hide();
                     AdminManager adminManager = new AdminManager(this, productRepository, memberRepository, orderRepository);
                     adminManager.Show();
@@ -55,6 +57,7 @@ namespace SaleWPFApp
                 }
                 else if (memberRepository.FindByEmailAndPassword(username, password) != null)
                 {
+                    Session.Username = username;
                     this.Hide();
                     Home home = new Home(this, productRepository, orderRepository);
                     home.Show();

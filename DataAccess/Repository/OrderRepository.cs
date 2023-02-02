@@ -21,7 +21,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<Order> FindByEmail(string email)
         {
-            throw new NotImplementedException();
+            return OrderDAO.Instance.FindAll(order => order.Member.Email == email);
         }
 
         public Order FindById(int id)

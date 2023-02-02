@@ -30,7 +30,7 @@ namespace DataAccess.Repository
 
         public Product FindById(int id)
         {
-            throw new NotImplementedException();
+            return ProductDAO.Instance.FindOne(product => product.ProductId == id);
         }
 
         public IEnumerable<Product> FindByPrice(decimal price)
